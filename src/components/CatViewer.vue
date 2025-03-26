@@ -18,17 +18,31 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <h2>Random Cat</h2>
-    <button @click="fetchRandom" :disabled="loading">Get New Cat</button>
-    <p v-if="loading">Loading...</p>
-    <p v-if="error" class="error">{{ error }}</p>
-    <img v-if="cats.length" :src="cats[0]" alt="Random Cat" style="max-width: 300px;">
+  <div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-white p-6">
+    <div class="bg-white bg-opacity-20 backdrop-blur-lg p-8 rounded-2xl shadow-lg text-center">
+      <h2 class="text-3xl font-extrabold mb-4 text-white drop-shadow-lg">🐱 Random Cat Generator</h2>
+
+      <button
+        @click="fetchRandom"
+        :disabled="loading"
+        class="px-6 py-3 bg-yellow-400 text-gray-800 font-bold rounded-full shadow-lg transition-all hover:bg-yellow-500 disabled:bg-gray-300 disabled:cursor-not-allowed"
+      >
+        {{ loading ? 'Fetching...' : 'Get a Cute Cat 😻' }}
+      </button>
+
+      <p v-if="loading" class="mt-4 text-lg font-medium animate-pulse">Loading...</p>
+      <p v-if="error" class="mt-4 text-lg text-red-500 font-semibold">{{ error }}</p>
+
+      <div v-if="cats.length" class="mt-6">
+        <img
+          :src="cats[0]"
+          alt="Random Cat"
+          class="w-80 h-80 object-cover rounded-2xl shadow-2xl border-4 border-white hover:scale-105 transition-all duration-300"
+        >
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.error {
-  color: red;
-}
 </style>
