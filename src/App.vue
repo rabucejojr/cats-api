@@ -4,7 +4,6 @@ import CatViewer from '@/components/CatViewer.vue'
 
 <template>
   <div class="text-center">
-    <h1>Cat Viewer</h1>
     <CatViewer />
   </div>
 
